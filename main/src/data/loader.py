@@ -70,11 +70,11 @@ class PlantDataset(Dataset):
     return image, torch.tensor(label)
 
 
-dataset = PlantDataset(main_folder_path,labels_dict,tf)
+dataset = PlantDataset(main_folder_path,labels_dict,tf) # type: ignore
 train_size =  int(len(dataset) *  0.7)
 valid_size =  len(dataset) -  train_size
 train_dataset,valid_dataset = random_split(dataset,[train_size,valid_size])
-def loader(train_dataset,valid_dataset):
+def loader():
   trn_dl = DataLoader(
       train_dataset,
       batch_size=64,

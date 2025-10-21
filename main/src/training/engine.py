@@ -10,8 +10,7 @@ from sklearn.metrics import accuracy_score
 import datetime
 
 labels_dict = set_up()
-trn_ds,val_ds = PlantDataset(main_path=main_folder_path,labels_dict=labels_dict,tf=transforms) # type: ignore
-trn_dl,val_dl = loader(train_dataset=trn_ds,valid_dataset=val_ds)
+trn_dl,val_dl = loader()
 model = get_model()
 optimizer = Adam(lr=1e-3,params=model.parameters())
 criterion = nn.CrossEntropyLoss()
