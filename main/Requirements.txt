@@ -15,6 +15,7 @@ torch==2.2.2
 torchvision==0.17.2
 torch_snippets
 torchinfo
+scikit-learn
 
 # Computer Vision
 opencv-python==4.9.0.80
