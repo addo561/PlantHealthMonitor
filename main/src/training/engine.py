@@ -9,6 +9,7 @@ from src.data.Eda import set_up
 from sklearn.metrics import accuracy_score
 import datetime
 from  src.utils.config  import load_config
+from  src.utils.logger import log_to_file,create_logger,save_checkpoint
 
 labels_dict = set_up()
 trn_dl,val_dl = loader()
@@ -48,9 +49,10 @@ def validate_batch(model,inputs,criterion):
 
 
 def train(trn_dl,val_dl):
-    n_epochs = 50
+    n_epochs = cfg['train']['epochs']
     log =Report(n_epochs=n_epochs)
     best_val_acc = 0
+    log_file, best_model_path = create_logger()
     for epoch in tqdm(range(n_epochs)):
         trn_loss,trn_acc,val_loss,val_acc =  0,0,0,0
         _n = len(trn_dl)
@@ -72,23 +74,10 @@ def train(trn_dl,val_dl):
         log.record(epoch+1,trn_loss=loss,trn_acc = acc,val_loss=val_loss,val_acc=val_acc )
         log.report_avgs(epoch+1)
 
-        with open(log_file,'a') as f:
-            f.write(
-                f'Epoch {epoch+1}/{n_epochs} |'
-                f'Train_loss :{trn_loss}  Train_accuracy : {trn_acc}|' 
-                f'val_loss :{val_loss}  val_accuracy : {val_acc}|' 
-            )
-        ck_path = f"outputs/checkpoints/Epoch_{epoch+1}.pt"
-        torch.save({
-            'epoch':  epoch + 1,
-            'model_state': model.state_dict(),
-            'optimizer':optimizer.state_dict(),
-            'val_acc':val_acc
-        },ck_path)
+        text = f"Epoch {epoch+1}: Train Acc={trn_acc:.4f}, Val Acc={val_acc:.4f}"
+        log_to_file(log_file,text=text)
 
-        if val_acc > best_val_acc:
-            best_val_acc = val_acc
-            torch.save(model.state_dict(), best_model_path)
+        save_checkpoint(model,optimizer,epoch,val_acc,best_model_path,best_val_acc)
     print('Training completed') 
     log.plot()
     log.save(f"outputs/logs/report_{timestamp}.png")

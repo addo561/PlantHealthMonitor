@@ -4,6 +4,8 @@ from datetime import datetime
 
 def create_logger():
     """Create log and checkpoint folders + filenames."""
+    os.makedirs("outputs/logs", exist_ok=True)
+    os.makedirs("outputs/checkpoints", exist_ok=True)
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     log_file = f"outputs/logs/train_{timestamp}.log"
     best_model_path = "outputs/checkpoints/best_model.pt"
