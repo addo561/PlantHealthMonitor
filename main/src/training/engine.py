@@ -21,10 +21,6 @@ criterion = nn.CrossEntropyLoss()
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-
-
-
-
 def train_batch(inputs,model,optimizer,criterion):
     model.train()
     n = len(trn_dl)
