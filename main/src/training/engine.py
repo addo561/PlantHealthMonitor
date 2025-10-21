@@ -44,9 +44,10 @@ def validate_batch(model,inputs,criterion):
     accurary = accuracy_score(l,pred.argmax(dim=1))
     return loss.item() ,accurary.item()
 
-n_epochs = 50
-log =Report(n_epochs=n_epochs)
+
 def train(trn_dl,val_dl):
+    n_epochs = 50
+    log =Report(n_epochs=n_epochs)
     for epoch in tqdm(range(n_epochs)):
         trn_loss,trn_acc,val_loss,val_acc =  0,0,0,0
         _n = len(trn_dl)
