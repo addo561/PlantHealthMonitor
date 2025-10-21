@@ -1,14 +1,21 @@
 import os
 import torch
 from datetime import datetime
+import os 
 
-def create_logger():
+def create_logger(base_dir=None):
     """Create log and checkpoint folders + filenames."""
-    os.makedirs("outputs/logs", exist_ok=True)
-    os.makedirs("outputs/checkpoints", exist_ok=True)
+    if  base_dir:
+        base_dir = os.getcwd()
+    logs_dir = os.path.join(base_dir,'outputs','logs')    
+    ck_dir = os.path.join(base_dir,'outputs','checkpoints')    
+    
+    os.makedirs(logs_dir, exist_ok=True)
+    os.makedirs(ck_dir, exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    log_file = f"outputs/logs/train_{timestamp}.log"
-    best_model_path = "outputs/checkpoints/best_model.pt"
+    log_file =  os.path.join(logs_dir,f'train_{timestamp}.log')
+    best_model_path = os.path.join(ck_dir,f"best_model.pt")
     return log_file, best_model_path
 
 
