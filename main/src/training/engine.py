@@ -9,6 +9,7 @@ from src.data.Eda import set_up
 from sklearn.metrics import accuracy_score
 import datetime
 
+
 labels_dict = set_up()
 trn_dl,val_dl = loader()
 model = get_model()
@@ -47,6 +48,7 @@ def validate_batch(model,inputs,criterion):
 def train(trn_dl,val_dl):
     n_epochs = 50
     log =Report(n_epochs=n_epochs)
+    best_val_acc = 0
     for epoch in tqdm(range(n_epochs)):
         trn_loss,trn_acc,val_loss,val_acc =  0,0,0,0
         _n = len(trn_dl)
