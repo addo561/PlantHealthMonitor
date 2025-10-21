@@ -8,12 +8,14 @@ from src.data.loader import loader,PlantDataset,transforms
 from src.data.Eda import set_up
 from sklearn.metrics import accuracy_score
 import datetime
-
+from  src.utils.config  import load_config
 
 labels_dict = set_up()
 trn_dl,val_dl = loader()
 model = get_model()
-optimizer = Adam(lr=1e-3,params=model.parameters())
+cfg  =  load_config()
+lr = cfg['train']['learning_rate']
+optimizer = Adam(lr=lr,params=model.parameters())
 criterion = nn.CrossEntropyLoss()
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
