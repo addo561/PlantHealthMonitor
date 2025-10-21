@@ -1,0 +1,28 @@
+# =====================
+# Training Configuration
+# =====================
+
+experiment:
+  name: plant_health_monitor
+  seed: 42
+
+data:
+  main_folder_path: data/plant_images
+  num_classes: 5
+  batch_size: 64
+  num_workers: 2
+  img_size: 224
+
+model:
+  name: vit_b_16
+  pretrained: true
+
+train:
+  epochs: 50
+  learning_rate: 0.001
+  optimizer: adam
+
+logging:
+  log_dir: /logs
+  checkpoint_dir: outputs/checkpoints
+  save_best_only: true
