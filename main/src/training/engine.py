@@ -19,9 +19,6 @@ lr = cfg['train']['learning_rate']
 optimizer = Adam(lr=lr,params=model.parameters())
 criterion = nn.CrossEntropyLoss()
 
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-log_file = f"outputs/logs/train_{timestamp}.log"
-best_model_path = "outputs/checkpoints/best_model.pt"
 
 
 
