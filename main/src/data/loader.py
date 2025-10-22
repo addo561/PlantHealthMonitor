@@ -1,7 +1,6 @@
-from torchvision.transforms  import transforms
 from  pathlib import Path
 import torch
-from torch.utils.data import DataLoader,Dataset,random_split
+from torch.utils.data import DataLoader,Dataset
 import os
 from PIL import Image,UnidentifiedImageError
 import numpy as np
