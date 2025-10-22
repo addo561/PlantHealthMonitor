@@ -6,18 +6,7 @@ import os
 from PIL import Image,UnidentifiedImageError
 import numpy as np
 from tqdm.auto import tqdm
-from src.data.Eda import set_up
 
-labels_dict = set_up()
-
-#perform data augmentations and other other transformations
-tf =  transforms.Compose([
-   transforms.ToTensor(),
-   #transforms.CenterCrop(10) ,
-   transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-   transforms.Resize((224,224)),
-   transforms.ColorJitter(brightness=0.3)
-])
 class PlantDataset(Dataset):
   """ Image dataset
    Attributes:
@@ -70,11 +59,7 @@ class PlantDataset(Dataset):
     return image, torch.tensor(label)
 
 
-dataset = PlantDataset(main_folder_path,labels_dict,tf) # type: ignore
-train_size =  int(len(dataset) *  0.7)
-valid_size =  len(dataset) -  train_size
-train_dataset,valid_dataset = random_split(dataset,[train_size,valid_size])
-def loader():
+def loader(train_dataset,valid_dataset):
   trn_dl = DataLoader(
       train_dataset,
       batch_size=64,

@@ -16,7 +16,7 @@ def create_logger(base_dir=None):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     log_file =  os.path.join(logs_dir,f'train_{timestamp}.log')
     best_model_path = os.path.join(ck_dir,f"best_model.pt")
-    return log_file, best_model_path
+    return log_file, best_model_path,base_dir
 
 
 def log_to_file(log_file, text):
