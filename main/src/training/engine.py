@@ -40,7 +40,7 @@ def train(trn_dl, val_dl, cfg, device, optimizer, criterion, model):
     log = Report(n_epochs=n_epochs)
     best_val_acc = 0
     
-    # FIX 1: Unpack all 3 return values
+
     log_file, best_model_path, _ = create_logger(base_dir=cfg['paths']['base_dir'])
     
     for epoch in range(n_epochs):
@@ -66,7 +66,7 @@ def train(trn_dl, val_dl, cfg, device, optimizer, criterion, model):
         
         log.record(epoch+1, trn_loss=trn_loss, trn_acc=trn_acc, 
                    val_loss=val_loss, val_acc=val_acc)
-        log.report_avgs(epoch+1)
+        #log.report_avgs(epoch+1)
         
         # Logging
         text = f"Epoch {epoch+1}: Train Acc={trn_acc:.4f}, Val Acc={val_acc:.4f}"
