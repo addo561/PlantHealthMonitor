@@ -16,18 +16,11 @@ Modular, config-driven, Colab-friendly, and designed for reproducible experiment
 
 ---
 
-## 📈 Latest training plot
+## training plot
 
-Make sure you have the latest plot copied to a stable filename so it renders in the README. Run from the repo root after training:
 
-```bash
-mkdir -p outputs/logs
-cp "$(ls -t outputs/logs/report_*.png | head -n1)" outputs/logs/report_latest.png
-```
 
-Then include that image in the README (already referenced below). If you prefer a timestamped file, update the image path accordingly.
-
-![Training Loss & Accuracy](/Users/user/Downloads/PlantHealthMonitor/main/Unknown.png)
+![Training Loss & Accuracy](/main/Unknown.png)
 
 ---
 
