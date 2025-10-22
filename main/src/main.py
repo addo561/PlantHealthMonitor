@@ -8,10 +8,13 @@ import main.src.data.Eda as Eda
 importlib.reload(Eda)
 from main.src.data.Eda import set_up,plot_image_sizes
 from main.src.data.loader import loader,PlantDataset
-from sklearn.model_selection import train_test_split
 from torchvision.transforms  import transforms
 from main.src.models.model import get_model
 from torchinfo import summary
+from main.src.utils.config import load_config
+from main.src.training.engine import train
+from main.src.utils.logger  import create_logger,log_to_file,save_checkpoint
+from torch.optim import Adam
 
 labels_dict = set_up(main_folder_path,show=True) # type: ignore
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -48,10 +51,7 @@ summary(
 
 model = get_model().to(device)
 
-from main.src.utils.config import load_config
-from main.src.training.engine import train
-from main.src.utils.logger  import create_logger,log_to_file,save_checkpoint
-from torch.optim import Adam
+
 
 # set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

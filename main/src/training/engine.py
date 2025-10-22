@@ -1,5 +1,3 @@
-from torch.optim import Adam
-from torch import nn
 import torch
 from tqdm.auto import tqdm
 from torch_snippets.torch_loader import Report
