@@ -76,6 +76,5 @@ def train(trn_dl, val_dl, cfg, device, optimizer, criterion, model):
     
     print('Training completed')
     log.plot()
-    log.save(f"outputs/logs/report_{timestamp}.png")
     
     return best_val_acc
