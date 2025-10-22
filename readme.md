@@ -27,7 +27,7 @@ cp "$(ls -t outputs/logs/report_*.png | head -n1)" outputs/logs/report_latest.pn
 
 Then include that image in the README (already referenced below). If you prefer a timestamped file, update the image path accordingly.
 
-![Training Loss & Accuracy](![outputs/logs/report_latest.png](main/Unknown.png))
+![Training Loss & Accuracy](/Users/user/Downloads/PlantHealthMonitor/main/Unknown.png)
 
 ---
 
