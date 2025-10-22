@@ -43,12 +43,12 @@ def train(trn_dl, val_dl, cfg, device, optimizer, criterion, model):
     # FIX 1: Unpack all 3 return values
     log_file, best_model_path, _ = create_logger(base_dir=cfg['paths']['base_dir'])
     
-    for epoch in tqdm(range(n_epochs)):
+    for epoch in range(n_epochs):
         trn_loss, trn_acc, val_loss, val_acc = 0, 0, 0, 0
         
         # Training loop
         _n = len(trn_dl)
-        for inputs in trn_dl:
+        for inputs in tqdm(trn_dl):
             loss, acc = train_batch(inputs, model, optimizer, criterion, device)
             trn_loss += loss
             trn_acc += acc
@@ -57,7 +57,7 @@ def train(trn_dl, val_dl, cfg, device, optimizer, criterion, model):
         
         # Validation loop
         _n = len(val_dl)
-        for inputs in val_dl:
+        for inputs in tqdm(val_dl):
             loss, acc = validate_batch(model, inputs, criterion, device)
             val_loss += loss
             val_acc += acc
