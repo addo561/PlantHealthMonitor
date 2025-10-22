@@ -1,0 +1,5 @@
+Epoch 1: Train Acc=0.7152, Val Acc=0.8238
+Epoch 2: Train Acc=0.8515, Val Acc=0.8618
+Epoch 3: Train Acc=0.8802, Val Acc=0.8781
+Epoch 4: Train Acc=0.8977, Val Acc=0.8925
+Epoch 5: Train Acc=0.9101, Val Acc=0.8937
