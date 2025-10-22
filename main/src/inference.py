@@ -16,9 +16,9 @@ tf =  transforms.Compose([
 ])
 classes =  15
 model = vit_b_16(weights = ViT_B_16_Weights)
-model.heads = nn.Sequential([
+model.heads = nn.Sequential(
     nn.Linear(in_features=768,out_features=classes)
-    ])
+    )
 for param in model.parameters():
     param.requires_grad  = False
 ck = '/Users/user/Downloads/PlantHealthMonitor/main/outputs/checkpoints/best_model.pt'
