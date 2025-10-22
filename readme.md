@@ -18,8 +18,6 @@ Modular, config-driven, Colab-friendly, and designed for reproducible experiment
 
 ## training plot
 
-
-
 ![Training Loss & Accuracy](/main/Unknown.png)
 
 ---
